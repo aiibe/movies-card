@@ -3,12 +3,11 @@ import Header from "./components/Header";
 import Cards from "./containers/Cards";
 import { movies$ } from "./data/movies";
 import "./index.css";
-import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import { useAppDispatch } from "./redux/hooks";
 import { fetchMovies } from "./redux/reducer/movies";
 import { Movie } from "./types/movies";
 
 function App() {
-  const movies = useAppSelector((state) => state.movies);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -23,9 +22,9 @@ function App() {
   }, []);
 
   return (
-    <div className="max-w-screen-md mx-auto">
+    <div className="max-w-screen-md mx-auto mt-4">
       <Header />
-      <Cards movies={movies} />
+      <Cards />
     </div>
   );
 }
