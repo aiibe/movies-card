@@ -1,5 +1,4 @@
 import Card from "../components/Card";
-import RatioLikes from "../components/RatioLikes";
 import { Movie } from "../types/movies";
 
 const Cards = ({ movies }: { movies: Movie[] }) => {
