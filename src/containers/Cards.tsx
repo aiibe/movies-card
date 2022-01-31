@@ -21,7 +21,8 @@ const Cards = () => {
 
   // Pagination
   const pagesCount = Math.ceil(allMovies.length / itemsPerPage);
-  allMovies = movies.slice(
+  const showMovies = filterSelection.length ? allMovies : movies;
+  allMovies = showMovies.slice(
     itemsPerPage * currentPage,
     itemsPerPage * (currentPage + 1)
   );
