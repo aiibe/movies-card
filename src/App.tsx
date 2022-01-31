@@ -1,22 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { movies$ } from "./data/movies";
 import "./index.css";
-
-type Movie = {
-  id: string;
-  title: string;
-  category: string;
-  likes: number;
-  dislikes: number;
-};
+import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import { fetchMovies } from "./redux/reducer/movies";
+import { Movie } from "./types/movies";
 
 function App() {
-  const [movies, setMovies] = useState<Movie[] | []>([]);
+  const movies = useAppSelector((state) => state.movies);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     async function fetchData() {
       const data = await movies$;
-      setMovies(data as Movie[]);
+      dispatch(fetchMovies(data as Movie[]));
     }
     fetchData();
   }, []);
@@ -38,7 +34,6 @@ const Cards = ({ movies }: { movies: Movie[] }) => {
           <div key={i} className="border-2 p-4 rounded">
             <h2 className="font-semibold">{m.title}</h2>
             <p>{m.category}</p>
-            {/* Ratio Likes/Dislikes */}
             <RatioLikes likes={m.likes} dislikes={m.dislikes} />
             <div className="">
               <button>remove</button>
