@@ -14,6 +14,7 @@ function App() {
     // Fetch data
     async function fetchData() {
       const data = await movies$;
+      // Hydrate redux store
       dispatch(fetchMovies(data as Movie[]));
     }
 
