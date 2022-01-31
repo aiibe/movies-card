@@ -10,8 +10,10 @@ export default function Card({ item }: { item: Movie }) {
   return (
     <div className="border-2 p-4 rounded relative">
       <Close onClick={() => dispatch(removeMovie(item.id))} />
-      <h2 className="font-semibold text-xl">{item.title}</h2>
-      <p className="text-sm">{item.category}</p>
+      <div className="mb-2">
+        <h2 className="font-semibold text-xl">{item.title}</h2>
+        <p className="text-sm">{item.category}</p>
+      </div>
       <RatioLikes likes={item.likes} dislikes={item.dislikes} />
     </div>
   );

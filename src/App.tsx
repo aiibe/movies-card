@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Header from "./components/Header";
 import Cards from "./containers/Cards";
 import { movies$ } from "./data/movies";
 import "./index.css";
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <div className="max-w-screen-md mx-auto">
+      <Header />
       <Cards movies={movies} />
     </div>
   );
