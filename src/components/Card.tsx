@@ -2,6 +2,7 @@ import { useAppDispatch } from "../redux/hooks";
 import { removeMovie } from "../redux/reducer/movies";
 import { Movie } from "../types/movies";
 import Close from "./Close";
+import Engage from "./Engage";
 import RatioLikes from "./RatioLikes";
 
 export default function Card({ item }: { item: Movie }) {
@@ -14,6 +15,7 @@ export default function Card({ item }: { item: Movie }) {
         <h2 className="font-semibold text-xl">{item.title}</h2>
         <p className="text-sm">{item.category}</p>
       </div>
+      <Engage itemId={item.id} />
       <RatioLikes likes={item.likes} dislikes={item.dislikes} />
     </div>
   );
