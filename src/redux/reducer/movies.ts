@@ -9,27 +9,27 @@ export const moviesSlice = createSlice({
   name: "movies",
   reducers: {
     likeMovie: (state, action: PayloadAction<string>) => {
-      // Bug: Should work with `return` instead
-      state.map((m) => {
-        if (m.id === action.payload) {
-          m.likes += 1;
+      // Mutation possible via Immer internally (don't use map function)
+      state.forEach((item) => {
+        if (action.payload === item.id) {
+          item.likes++;
         }
-        return m;
       });
     },
     dislikeMovie: (state, action: PayloadAction<string>) => {
-      state.map((m) => {
-        if (m.id === action.payload) {
-          m.dislikes += 1;
+      state.forEach((item) => {
+        if (action.payload === item.id) {
+          item.dislikes++;
         }
-        return m;
       });
     },
     removeMovie: (state, action: PayloadAction<string>) => {
+      // Or return new state (not working with map)
       return state.filter((m) => m.id !== action.payload);
     },
   },
   extraReducers: ({ addCase }) => {
+    // Builder cases pending, fulfilled, rejected by thunk
     addCase(getMovies.fulfilled, (state, action: PayloadAction<Movie[]>) => {
       return [...action.payload];
     });
