@@ -5,7 +5,11 @@
 This project has been made for a React interview from [Particeep - React Interview](https://github.com/Particeep/react-interview).
 Follow the link to find the instructions and data provided for the test.
 
+Live demo : https://movies-card.vercel.app
+
 ## Stacks
+
+✔️ React
 
 ✔️ Written in Typescript
 
