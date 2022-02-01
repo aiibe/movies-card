@@ -33,6 +33,7 @@ const Cards = () => {
       ? filterSelection.filter((f) => f !== opt)
       : [...filterSelection, opt];
     setFilterSelection(newFilter);
+    setCurrentPage(0);
   };
 
   const handleSelectPage: ChangeEventHandler<HTMLSelectElement> = (e) => {
